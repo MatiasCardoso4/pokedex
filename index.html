@@ -8,10 +8,17 @@
   </head>
   <body>
     <main>
+      <form>
+        <label for="poke-name">Search your pokemon</label>
+        <input type="text" id="poke-name" name="poke-name" />
+        <button type="submit">Search</button>
+      </form>
+
       <section class="pokedex">
         <h3 class="pokemon-name"></h3>
         <span class="pokemon-id"></span>
-        <p class="pokemon-abilities"></p>
+        <ul class="pokemon-abilities"></ul>
+        <ul class="pokemon-stats"></ul>
         <p class="pokemon-type"></p>
       </section>
     </main>
