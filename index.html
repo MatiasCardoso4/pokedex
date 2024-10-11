@@ -6,23 +6,43 @@
     <link rel="stylesheet" href="style.css" />
     <title>Pokedex</title>
   </head>
-  <body>
-    <main>
-      <form>
-        <label for="poke-name">Search your pokemon</label>
-        <input type="text" id="poke-name" name="poke-name" />
-        <button type="submit">Search</button>
-      </form>
 
+  <body>
+    <main class="container">
+      <header>
+        <h1>PokeInfo</h1>
+      </header>
+      <section class="form-container">
+        <form>
+          <label for="poke-name">Search info about your favorite pokemon</label>
+          <input
+            type="text"
+            id="poke-name"
+            name="poke-name"
+            autocomplete="off"
+          />
+          <button type="submit">Search</button>
+        </form>
+      </section>
       <section class="pokedex">
         <h3 class="pokemon-name"></h3>
+        <div class="pokemon-sprite-container">
+          <img src="" alt="pokemon image" class="pokemon-sprite" >
+        </div>
         <span class="pokemon-id"></span>
-        <p> <ul class="pokemon-abilities"></ul></p>
-        <p> <ul class="pokemon-stats"></ul></p>
-        <p> <ul class="pokemon-type"></ul></p>
-       
-       
-       
+
+        <div class="pokemon-stats-container">
+          <ul class="pokemon-stats"><ul/>
+        </div>
+     
+        
+        </ul>
+        <div class="pokemon-abilities-container">
+          <ul class="pokemon-abilities"></ul>
+
+        </div>
+
+        <ul class="pokemon-type"></ul>
       </section>
     </main>
     <script src="script.js"></script>

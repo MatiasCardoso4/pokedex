@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: rgb(228, 197, 23);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  margin-top: 6px;
+  font-size: 40px;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 18px;
+}
+
+label {
+  margin-bottom: 6px;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+input[type="text"] {
+  width: 200px;
+  height: 30px;
+  padding: 2px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+button[type="submit"] {
+  width: 150px;
+  height: 40px;
+  margin-top: 6px;
+  border: none;
+  background-color: rgb(241, 10, 10);
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: white;
+}
+
+button[type="submit"]:active {
+  background-color: lightcoral;
+  opacity: 0.8;
+}
+
+.pokedex {
+  height: 60vh;
+  margin-top: 20px;
+}
+
+.pokemon-name {
+  font-size: 28px;
+}
+
+.pokedex .pokemon-sprite {
+  display: none;
+  width: 150px;
+  margin: auto;
+}
+
+.pokemon-id {
+  font-weight: bold;
+}
+
+.pokedex .pokemon-stats-container {
+  margin-top: 22px;
+}
+.pokedex .pokemon-stats-container h5 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+.pokedex .pokemon-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.pokedex .pokemon-stats-container li {
+  list-style: none;
+}
+
+.pokedex .pokemon-abilities {
+  margin-bottom: 20px;
+}
