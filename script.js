@@ -2,7 +2,7 @@ const pokemon_name = document.querySelector(".pokemon-name");
 const pokemon_id = document.querySelector(".pokemon-id");
 const pokemon_abilities = document.querySelector(".pokemon-abilities");
 const pokemon_stats = document.querySelector(".pokemon-stats");
-
+const pokemon_type = document.querySelector(".pokemon-type");
 /* ######################################## */
 const inputSearch = document.getElementById("poke-name");
 const form = document.querySelector("form");
@@ -24,20 +24,21 @@ async function getPokemon() {
   const response = await fetch(URL);
   response.json().then((data) => {
     showPokemonInfo(data);
-    console.log(data);
   });
 }
 
 function showPokemonInfo(data) {
-  const { name, id, abilities, stats } = data;
-  getPokemonStats(stats);
-  getPokemonAbilities(abilities);
+  cleanDisplay();
+  const { name, id, abilities, stats, types } = data;
   pokemon_name.textContent = name;
   pokemon_id.textContent = id;
+  getPokemonStats(stats);
+  getPokemonAbilities(abilities);
+  getPokemonTypes(types);
 }
 
 function getPokemonStats(stats) {
-  stats.forEach((stat, i) => {
+  stats.forEach((stat) => {
     const li = document.createElement("li");
     li.textContent = `${stat.base_stat} ${stat.stat.name}`;
     pokemon_stats.append(li);
@@ -45,10 +46,25 @@ function getPokemonStats(stats) {
 }
 
 function getPokemonAbilities(abilities) {
-  abilities.forEach((ability, i) => {
+  abilities.forEach((ability) => {
     const li = document.createElement("li");
-    li.textContent = `${ability.ability} `;
+    li.textContent = `${ability.ability.name} `;
     pokemon_stats.append(li);
   });
-  console.log(abilities);
+}
+
+function getPokemonTypes(types) {
+  types.forEach((type) => {
+    const li = document.createElement("li");
+    li.textContent = `${type.type.name} `;
+    pokemon_type.append(li);
+  });
+}
+
+function cleanDisplay() {
+  pokemon_name.textContent = "";
+  pokemon_id.textContent = "";
+  pokemon_abilities.textContent = "";
+  pokemon_stats.textContent = "";
+  pokemon_type.textContent = "";
 }
