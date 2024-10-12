@@ -4,7 +4,9 @@ const pokemon_id = document.querySelector(".pokemon-id");
 const pokemon_abilities = document.querySelector(".pokemon-abilities");
 const pokemon_stats = document.querySelector(".pokemon-stats");
 const pokemon_type = document.querySelector(".pokemon-type");
-
+const pokemon_sprite_container = document.querySelector(
+  ".pokemon-sprite-container"
+);
 /* ######################################## */
 const inputSearch = document.getElementById("poke-name");
 const form = document.querySelector("form");
@@ -20,6 +22,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   getPokemon();
 });
+
 /* ######################################## */
 async function getPokemon() {
   const URL = `https://pokeapi.co/api/v2/pokemon/${pokemon.toLocaleLowerCase()}`;
@@ -35,9 +38,10 @@ function showPokemonInfo(data) {
 
   const { name, sprites, id, abilities, stats, types } = data;
   pokemon_name.textContent = name;
-  data ? (pokemon_sprite.style.display = "block") : "none";
-  pokemon_sprite.src = `${sprites.front_default}`;
   pokemon_id.textContent = `id: ${id}`;
+  data ? (pokemon_sprite.style.display = "block") : "none";
+  data ? (pokemon_sprite_container.style.display = "block") : "none";
+  pokemon_sprite.src = `${sprites.front_default}`;
   getPokemonStats(stats);
   // getPokemonAbilities(abilities);
   // getPokemonTypes(types);
