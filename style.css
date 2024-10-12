@@ -93,6 +93,7 @@ button[type="submit"]:active {
 
 .pokemon-id {
   font-size: 18px;
+  font-weight: bold;
 }
 
 .pokedex .pokemon-sprite-container {
@@ -110,9 +111,8 @@ button[type="submit"]:active {
   display: none;
   width: 150px;
 }
-
-.pokemon-id {
-  font-weight: bold;
+.error-message {
+  font-size: 30px;
 }
 
 .pokedex .pokemon-stats-container {

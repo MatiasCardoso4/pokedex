@@ -7,6 +7,8 @@ const pokemon_type = document.querySelector(".pokemon-type");
 const pokemon_sprite_container = document.querySelector(
   ".pokemon-sprite-container"
 );
+
+const error_message = document.querySelector(".error-message");
 /* ######################################## */
 const inputSearch = document.getElementById("poke-name");
 const form = document.querySelector("form");
@@ -20,25 +22,32 @@ inputSearch.addEventListener("input", (e) => {
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  showError();
   getPokemon();
 });
 
 /* ######################################## */
 async function getPokemon() {
-  const URL = `https://pokeapi.co/api/v2/pokemon/${pokemon.toLocaleLowerCase()}`;
-  const response = await fetch(URL);
-  response.json().then((data) => {
-    showPokemonInfo(data);
-    // console.log(data);
-  });
+  try {
+    const URL = `https://pokeapi.co/api/v2/pokemon/${pokemon.toLocaleLowerCase()}`;
+    const response = await fetch(URL);
+    response.json().then((data) => {
+      showPokemonInfo(data);
+      // console.log(data);
+    });
+  } catch (e) {
+    throw new Error("Pokemon not found!");
+  }
 }
 
 function showPokemonInfo(data) {
   cleanDisplay();
 
   const { name, sprites, id, abilities, stats, types } = data;
-  pokemon_name.textContent = name;
-  pokemon_id.textContent = `id: ${id}`;
+  pokemon_name.textContent = `${name
+    .slice(0, 1)
+    .toLocaleUpperCase()}${name.slice(1)}`;
+  data && (error_message.textContent = "");
   data ? (pokemon_sprite.style.display = "block") : "none";
   data ? (pokemon_sprite_container.style.display = "block") : "none";
   pokemon_sprite.src = `${sprites.front_default}`;
@@ -57,7 +66,11 @@ function getPokemonStats(stats) {
     const stat_name_paragraph = document.createElement("p");
 
     stat_value_paragraph.append(`${stat.base_stat}`);
-    stat_name_paragraph.append(`${stat.stat.name}`);
+    stat_name_paragraph.append(
+      `${stat.stat.name.slice(0, 1).toLocaleUpperCase()}${stat.stat.name.slice(
+        1
+      )}`
+    );
     li.append(stat_value_paragraph, stat_name_paragraph);
     pokemon_stats.append(li);
 
@@ -87,4 +100,10 @@ function cleanDisplay() {
   pokemon_stats.textContent = "";
   pokemon_abilities.textContent = "";
   pokemon_type.textContent = "";
+}
+
+function showError() {
+  if (inputSearch.validity.valueMissing) {
+    error_message.textContent = "Please type a pokemon name";
+  }
 }

@@ -13,13 +13,14 @@
         <h1>PokeInfo</h1>
       </header>
       <section class="form-container">
-        <form>
+        <form novalidate>
           <label for="poke-name">Search info about your favorite pokemon</label>
           <input
             type="text"
             id="poke-name"
             name="poke-name"
             autocomplete="off"
+            required
           />
           <button type="submit">Search</button>
         </form>
@@ -30,7 +31,7 @@
         <div class="pokemon-sprite-container">
           <img src="" alt="pokemon image" class="pokemon-sprite" >
         </div>
-       
+       <div class="error-message"></div>
 
         <div class="pokemon-stats-container">
           <ul class="pokemon-stats"><ul/>
