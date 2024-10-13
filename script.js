@@ -20,9 +20,9 @@ const form = document.querySelector("form");
 let pokemon = undefined;
 
 //H5 ENCABEZADO PARA LOS STATS
-const h5 = document.createElement("h5");
-h5.textContent = "Stats";
-
+const h3 = document.createElement("h3");
+h3.textContent = "Stats";
+h3.classList.add("stats-title");
 //INPUT PARA BUSCAR EL POKEMON
 inputSearch.addEventListener("input", (e) => {
   const value = e.target.value;
@@ -52,20 +52,16 @@ async function getPokemon() {
 
 //FUNCIÓN PARA MOSTRAR LOS POKEMON EN PANTALLA
 function showPokemonInfo(data) {
-  cleanDisplay();
-
   const { name, sprites, id, abilities, stats, types } = data;
+  cleanDisplay();
+  checkIfDataExists(data);
   pokemon_name.textContent = `${name
     .slice(0, 1)
     .toLocaleUpperCase()}${name.slice(1)}`;
-
-  data && (error_message.textContent = "");
-  data ? (pokemon_sprite.style.display = "block") : "none";
-  data ? (pokemon_sprite_container.style.display = "block") : "none";
   pokemon_sprite.src = `${sprites.front_default}`;
 
   getPokemonStats(stats);
-  // getPokemonAbilities(abilities);
+  getPokemonAbilities(abilities);
   // getPokemonTypes(types);
 }
 
@@ -74,19 +70,19 @@ function getPokemonStats(stats) {
   const stats_container = document.querySelector(".pokemon-stats-container");
 
   stats.forEach((stat) => {
-    const li = document.createElement("li");
-    const stat_value_paragraph = document.createElement("p");
-    const stat_name_paragraph = document.createElement("p");
+    const stats_list = document.createElement("li");
+    const stat_value = (document.createElement(
+      "p"
+    ).textContent = `${stat.base_stat}`);
+    const stat_name = (document.createElement(
+      "p"
+    ).textContent = `${stat.stat.name
+      .slice(0, 1)
+      .toLocaleUpperCase()}${stat.stat.name.slice(1)}`);
 
-    stat_value_paragraph.append(`${stat.base_stat}`);
-    stat_name_paragraph.append(
-      `${stat.stat.name.slice(0, 1).toLocaleUpperCase()}${stat.stat.name.slice(
-        1
-      )}`
-    );
-    li.append(stat_value_paragraph, stat_name_paragraph);
-    pokemon_stats.appendChild(li);
-    stats_container.append(h5, pokemon_stats);
+    stats_list.append(stat_value, stat_name);
+    pokemon_stats.appendChild(stats_list);
+    stats_container.append(h3, pokemon_stats);
   });
 }
 
@@ -94,8 +90,10 @@ function getPokemonStats(stats) {
 function getPokemonAbilities(abilities) {
   abilities.forEach((ability) => {
     const li = document.createElement("li");
-    li.textContent = `${ability.ability.name} `;
-    pokemon_stats.append(li);
+    const ability_name_paragraph = document.createElement("p");
+    ability_name_paragraph.append(`${ability.ability.name} `);
+
+    pokemon_abilities.append(ability_name_paragraph);
   });
 }
 
@@ -122,4 +120,10 @@ function showError() {
   if (inputSearch.validity.valueMissing) {
     error_message.textContent = "Please type a pokemon name";
   }
+}
+
+function checkIfDataExists(data) {
+  data && (error_message.textContent = "");
+  data ? (pokemon_sprite.style.display = "block") : "none";
+  data ? (pokemon_sprite_container.style.display = "block") : "none";
 }
