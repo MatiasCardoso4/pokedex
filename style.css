@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(248, 229, 163);
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 700;
@@ -43,6 +43,7 @@ input[type="text"] {
   padding: 6px;
   border: 1px solid lightgrey;
   border-radius: 12px;
+  font-size: 18px;
 }
 
 input[type="text"]:focus {
@@ -64,26 +65,19 @@ button[type="submit"] {
   border: none;
   background: linear-gradient(
     90deg,
-    rgb(179, 60, 239) 0%,
-    rgb(129, 58, 227) 35%,
-    rgb(92, 29, 229) 100%
+    rgb(245, 241, 5) 10%,
+    rgb(251, 185, 3) 80%
   );
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 6px;
   cursor: pointer;
-  color: white;
+  color: #000;
   transition: box-shadow 0.15s;
 }
 
 button[type="submit"]:hover {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.15);
-  background: linear-gradient(
-    90deg,
-    rgb(92, 29, 229) 0%,
-    rgb(129, 58, 227) 35%,
-    rgb(179, 60, 239) 100%
-  );
 }
 
 button[type="submit"]:active {
@@ -111,19 +105,22 @@ button[type="submit"]:active {
   transition: transform 1500ms;
   transform-style: preserve-3d;
   cursor: pointer;
-  background-color: rgb(248, 248, 98);
+  background-color: rgba(239, 239, 132, 0.908);
+
+  border-radius: 12px;
 }
 
 .pokemon-card-front,
 .pokemon-card-back {
   border-radius: 12px;
-  border: 3px solid black;
-  color: #ffa201;
+  border: 4px solid black;
+  color: #000;
   flex-direction: column;
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
 }
 
 .pokemon-card-back {
