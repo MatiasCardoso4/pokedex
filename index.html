@@ -14,37 +14,43 @@
       </header>
       <section class="form-container">
         <form novalidate>
-          <label for="poke-name">Search info about your favorite pokemon</label>
+          <p>Ingrese nombre o id</p>
           <input
             type="text"
-            id="poke-name"
-            name="poke-name"
+            id="search"
+            name="search"
             autocomplete="off"
             required
           />
+          <span class="error"></span>
           <button type="submit">Search</button>
         </form>
       </section>
       <section class="pokedex">
-        <h3 class="pokemon-name"></h3>
-        <span class="pokemon-id"></span>
-        <div class="pokemon-sprite-container">
-          <img src="" alt="pokemon image" class="pokemon-sprite" >
-        </div>
-       <div class="error-message"></div>
+        <div class="pokemon-card">
+          <div class="pokemon-card-front">
+            <h3 class="pokemon-name"></h3>
+            <span class="pokemon-id"></span>
+            <div class="pokemon-sprite-container">
+              <img src="" alt="pokemon image" class="pokemon-sprite" />
+            </div>
+          </div>
+          <div class="pokemon-card-back">
+            <div class="pokemon-stats-container">
+              <div class="pokemon-stats">
+                <li class="stats-list">
+                  <p class="stat-value"></p>
+                  <p class="stat-name"></p>
+                </li>
+              </div>
+            </div>
+            <div class="pokemon-abilities-container">
+              <ul class="pokemon-abilities"></ul>
+            </div>
 
-        <div class="pokemon-stats-container">
-          <ul class="pokemon-stats"><ul/>
+            <ul class="pokemon-type"></ul>
+          </div>
         </div>
-     
-        
-        </ul>
-        <div class="pokemon-abilities-container">
-          <ul class="pokemon-abilities"></ul>
-
-        </div>
-
-        <ul class="pokemon-type"></ul>
       </section>
     </main>
     <script src="script.js"></script>
